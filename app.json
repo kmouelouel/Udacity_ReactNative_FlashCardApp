@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "sdkVersion": "25.0.0",
+    "orientation": "portrait",
+    "name": "FlashCard",
+    "description": "The best flash card app in the world.",
+    "slug": "udacifitness",
+    "version": "1.0",
+    "icon": "https://png.icons8.com/nolan/64/000000/ask-question.png",
+    "notification": {
+      "icon": "http://www.student-scholarships.com/images/made/img/featured/nav_basketball_45_45.png"
+    },
+    "ios": {
+      "bundleIdentifier": "org.flashcard.exp"
+    },
+    "android": {
+      "package": "org.flashcard.exp"
+    }
+  }
+}
+ 

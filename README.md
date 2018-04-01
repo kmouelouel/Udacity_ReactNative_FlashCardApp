@@ -50,7 +50,7 @@ SOFTWARE.
 
 ## Screenshots
 
-![FlashCard screenshot](./screenshots/HomeNavigation.png)
+![FlashCard screenshot](./screenshots/homeNavigation.png)
 
 ![NewDeck screenshot](./screenshots/newDeck.png)
 

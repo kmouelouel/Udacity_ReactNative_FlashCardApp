@@ -50,10 +50,10 @@ SOFTWARE.
 
 ## Screenshots
 
-![FlashCard screenshot](FlashCard/screenshots/HomeNavigation.png)
+![FlashCard screenshot](./screenshots/HomeNavigation.png)
 
-![NewDeck screenshot](FlashCard/screenshots/newDeck.png)
+![NewDeck screenshot](./screenshots/newDeck.png)
 
-![addCard screenshot](FlashCard/screenshots/addCard.png)
+![addCard screenshot](./screenshots/addCard.png)
 
-![Quiz screenshot](FlashCard/screenshots/startQuiz.png)
+![Quiz screenshot](./screenshots/startQuiz.png)

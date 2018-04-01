@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { addDeck } from '../actions/index';
 import { NavigationActions } from 'react-navigation';
 import { createDeck } from '../utils/api'; 
+import TextButton from './TextButton'
+import { lightBlue } from '../utils/colors'
 
 class NewDeckView extends React.Component {
 
@@ -57,7 +59,9 @@ class NewDeckView extends React.Component {
                 <Text style={styles.text}>What is the title of you new deck?</Text>
                 <TextInput style={styles.input} autoFocus placeholder='Deck Title' value={this.state.deckName} onChangeText={this.textChange} />
                 <View style={styles.button}>
-                    <Button title='Add' onPress={this.submit} />
+                    <TextButton style={{ backgroundColor: lightBlue, }} onPress={this.submit} >
+                        Add
+                   </TextButton> 
                 </View>
             </View>
         );

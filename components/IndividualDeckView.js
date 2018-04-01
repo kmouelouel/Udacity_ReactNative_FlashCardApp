@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { StyleSheet, View, Button, Text } from 'react-native';
+import { lightRed,lightBlue } from '../utils/colors'
+import TextButton from './TextButton'
 
 class IndividualDeckView  extends Component {
     static navigationOptions = ({ navigation }) => {
@@ -27,13 +29,17 @@ class IndividualDeckView  extends Component {
                     <Text style={{ fontSize: 30 }}>{questions.length}</Text>
                     <Text style={styles.cards}>cards</Text>
                 </View>
-                <View style={styles.button}>
-                    <Button title='add card' onPress={() => navigation.navigate('NewQuestionView', { deck})} />
+                <View style={styles.button}> 
+                    <TextButton style={{ backgroundColor: lightBlue, }} onPress={() => navigation.navigate('NewQuestionView', { deck })} >
+                        add card
+                   </TextButton> 
                 </View>
                 {deck.questions.length > 0 &&
-                    <View style={styles.button}>
-                    <Button title='start quiz' color='#e74c3c' onPress={() => navigation.navigate('QuizView', { deck })} />
-                    </View>
+                <View style={styles.button}>
+                    <TextButton style={{ backgroundColor: lightRed, }} onPress={() => navigation.navigate('QuizView', { deck })} >
+                       start quiz
+                   </TextButton> 
+                </View>
                 }
             </View>
         );

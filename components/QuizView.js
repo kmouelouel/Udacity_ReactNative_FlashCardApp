@@ -1,8 +1,10 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet, View, Button, Text } from 'react-native';
-import { setLocalNotification, clearLocalNotification } from '../utils/helpers';
+import { setLocalNotification, clearLocalNotification,capitalize } from '../utils/helpers';
 import { NavigationActions } from 'react-navigation';
-import { red, white, lightBlue, lightPurp } from '../utils/colors'
+import { lightRed, white, lightBlue, blue, lightPurp } from '../utils/colors'
+import TextButton from './TextButton'
+ 
 
 export default class QuizView extends React.Component {
 
@@ -65,38 +67,54 @@ export default class QuizView extends React.Component {
         return (
             <View style={styles.container}>
 
-                <View style={{ margin: 20 }}>
-                    <Text style={{ fontSize: 20 }}>{currentQuestion + 1} / {deck.questions.length}</Text>
-                </View>
-
+                
                 {finishedQuiz ?
                     <View>
                         <View style={[styles.nums, { alignItems: 'center' }]}>
                             <Text style={{ fontSize: 20 }}>Correct: {correctNum}</Text>
                             <Text style={{ fontSize: 20, color: '#e74c3c' }}>Incorrect: {deck.questions.length - correctNum}</Text>
                         </View>
-                        <View style={styles.button}>
-                            <Button title='retest' onPress={this.retest} />
+                        <View style={styles.button}> 
+                            <TextButton style={{ backgroundColor: lightBlue, }} onPress={this.retest} >
+                                retest
+                            </TextButton>
                         </View>
                         <View style={styles.button}>
-                            <Button title='go back' onPress={this.back} />
+                            <TextButton style={{ backgroundColor: lightPurp,}} onPress={this.back} >
+                                go back
+                            </TextButton> 
                         </View>
                     </View>
                     :
                     <View>
-                        <TouchableOpacity onPress={this.toggleAnswer} style={[styles.card, showAnswer ? styles.answerCard : null]}>
-                            {showAnswer ?
-                                <Text style={styles.cardFont}>{deck.questions[currentQuestion].answer}</Text>
-                                :
-                                <Text style={styles.cardFont}>{deck.questions[currentQuestion].question}</Text>
-                            }
-                        </TouchableOpacity>
+                        <View style={{ margin: 20 }}>
+                            <Text style={{ fontSize: 20 }}>{currentQuestion + 1} / {deck.questions.length}</Text>
+                       </View>
 
-                        <View style={styles.button}>
-                            <Button title='correct' onPress={() => this.nextQuestion(true)} />
+                       {showAnswer ?
+                            <Text style={[styles.cardFont, styles.card]}>{deck.questions[currentQuestion].answer}</Text>
+                                :
+                            <Text style={[styles.cardFont, styles.card]}>{deck.questions[currentQuestion].question}</Text>
+                        }
+                     
+                     
+                       <View style={styles.button}>
+                            <TextButton style={{ backgroundColor: 'transparent', color: lightBlue, }} onPress={this.toggleAnswer}>
+                                {showAnswer ? 'show Question' : 'show Answer'}
+                            </TextButton>
+                       </View>
+                       
+                       <View style={styles.button}>
+                        <TextButton style={{ backgroundColor: lightBlue, }} onPress={() => this.nextQuestion(true)} >
+                               correct 
+                            </TextButton>
+                            
                         </View>
-                        <View style={styles.button}>
-                            <Button color='#e74c3c' title='incorrect' onPress={() => this.nextQuestion(false)} />
+                       <View style={styles.button}>
+                            <TextButton style={{ backgroundColor: lightRed, }} onPress={() => this.nextQuestion(false)} >
+                                incorrect 
+                            </TextButton>
+                           
                         </View>
 
                     </View>
@@ -110,7 +128,7 @@ export default class QuizView extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center', 
     },
     card: {
         justifyContent: 'center',
@@ -118,7 +136,7 @@ const styles = StyleSheet.create({
         width: 300,
         height: 200,
         marginTop: 30,
-        marginBottom: 30,
+        marginBottom: 10,
         backgroundColor: lightBlue,
     },
     answerCard: {
@@ -129,13 +147,9 @@ const styles = StyleSheet.create({
         padding: 30,
         fontSize: 16
     },
-    next: {
-        alignSelf: 'center',
-        margin: 20
-    },
     button: {
         margin: 10,
         paddingLeft: 80,
         paddingRight: 80
-    }
+    } 
 });

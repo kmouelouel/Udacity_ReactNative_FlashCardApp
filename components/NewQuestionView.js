@@ -1,9 +1,11 @@
 import React from 'react';
-import { StyleSheet, Keyboard, View, Button, Text, TextInput ,KeyboardAvoidingView} from 'react-native';
+import { StyleSheet, Keyboard, View, Button, Text, TextInput, KeyboardAvoidingView, Alert} from 'react-native';
 import { connect } from 'react-redux';
 import { addCard } from '../actions/index';
 import { NavigationActions } from 'react-navigation';
 import * as API from '../utils/api';
+import TextButton from './TextButton';
+import { lightBlue } from '../utils/colors'
 
 class NewQuestionView extends React.Component {
  state = {
@@ -23,7 +25,7 @@ class NewQuestionView extends React.Component {
         let { question, answer } = this.state;
 
         if (!question.trim() || !answer.trim()) {
-            Alert.alert('ERROR', 'can not be null string!');
+            Alert.alert('ERROR', 'The question and answer can not be null string!');
             return;
         }
 
@@ -56,8 +58,10 @@ class NewQuestionView extends React.Component {
             <KeyboardAvoidingView behavior='padding' style={{ flex: 1 }}>
                 <TextInput style={styles.input} placeholder="Question" onChangeText={this.onQchange} />
                 <TextInput style={styles.input} placeholder="Answer" onChangeText={this.onAchange} />
-                <View style={styles.button}>
-                    <Button title='Submit' onPress={this.submit} />
+                <View style={styles.button}> 
+                    <TextButton style={{ backgroundColor: lightBlue, }} onPress={this.submit} >
+                        Submit
+                   </TextButton>
                 </View>
             </KeyboardAvoidingView>
         );

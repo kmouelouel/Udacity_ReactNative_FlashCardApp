@@ -22,6 +22,7 @@ class DefaultView extends Component {
     }
     componentDidMount() {
         const { dispatch } = this.props
+        clearStorage()
          fetchDecks()
             .then((decks) => dispatch(receiveDecks(decks)))
             .then(() => this.setState(() => ({ ready: true })))
